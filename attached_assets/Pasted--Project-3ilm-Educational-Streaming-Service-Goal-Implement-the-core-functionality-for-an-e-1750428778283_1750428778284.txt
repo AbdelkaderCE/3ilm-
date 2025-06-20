@@ -1,0 +1,172 @@
+## Project: 3ilm+ Educational Streaming Service
+
+**Goal:** Implement the core functionality for an educational streaming service, focusing on user authentication, content display, and basic profile management. Simultaneously, **review, optimize, and enhance the existing design** for a more modern and polished "Netflix-like" user experience.
+
+**Current Project State (Frontend-heavy, Firebase Initialized):**
+The project currently has a well-structured frontend with HTML and CSS files in the `public/` directory, aiming for a dark, modern, "Netflix-like" user experience with a blue accent. Firebase Emulators are initialized and working.
+
+**File Structure:**
+3ilm-plus/
+├── public/
+│   ├── index.html          ← Landing Page
+│   ├── login.html          ← Login Page
+│   ├── register.html       ← Signup Page
+│   ├── home.html           ← Homepage (after login)
+│   ├── watch.html          ← Video Player Page
+│   ├── profile.html        ← User profile
+│   ├── admin.html          ← Admin dashboard
+│   ├── 404.html            ← Not Found Page
+│   ├── js/
+│   │   ├── main.js         ← Firebase initialization, core auth state listener, global utilities
+│   │   ├── auth.js         ← Authentication logic (login, register, Google Auth, logout)
+│   │   ├── home.js         ← NEW: Logic for homepage content display
+│   │   ├── videoPlayer.js  ← NEW: Logic for video playback and related content
+│   │   ├── profileManager.js ← NEW: Logic for user profile updates
+│   │   └── adminDashboard.js ← NEW: Logic for admin functionalities
+│   │   └── utils.js        ← NEW: General utility functions (e.g., DOM manipulation helpers, error display)
+│   ├── css/
+│   │   ├── style.css       ← Main site styling
+│   │   ├── base.css        ← Basic resets, typography, universal styles
+│   │   ├── layout.css      ← Site layout (header, footer, containers)
+│   │   └── pages/          ← Page-specific styles (e.g., auth.css, home.css - if needed)
+│   │       └── auth.css    ← (Optional: current auth styles in style.css, can be moved here)
+│   ├── assets/
+│   │   └── logo.png, thumbnails, etc. (Placeholder images are used, can be replaced by real ones)
+├── firebase.json           ← Firebase settings
+├── .firebaserc             ← Firebase project config
+├── functions/              ← Cloud Functions directory (JavaScript selected)
+│   ├── index.js
+│   ├── package.json
+│   └── ...
+└── package.json            ← Project dependencies
+
+
+**Firebase Setup:**
+* Firebase project is created and linked.
+* Firebase CLI is installed and logged in.
+* `firebase.json` and `.firebaserc` are configured.
+* Firebase Authentication (Email/Password, Google Sign-in) is **enabled** in the Firebase Console.
+* Cloud Firestore, Cloud Storage, and Cloud Functions are enabled in the Firebase project.
+* Firebase Emulators (`firebase emulators:start`) are confirmed to be running and serving `public/` correctly.
+* `public/js/main.js` correctly initializes Firebase and exports the `app` instance. It also contains basic `onAuthStateChanged` redirection logic.
+
+---
+
+### Task for the Replit Agent: Implement Functionality & Optimize Design
+
+**General Instructions:**
+
+* **Comprehensive Design Review & Optimization:**
+    * **Review all HTML and CSS files.**
+    * **Identify and fix any remaining visual inconsistencies or areas that feel "not modern enough"** based on the "Netflix-like" aesthetic with a blue accent.
+    * **Optimize CSS for performance and maintainability:** Consolidate redundant styles, refine selector specificity, ensure proper use of variables (if applicable, or suggest their use), and add comments where necessary.
+    * **Ensure optimal responsiveness** across various screen sizes.
+    * **Address any placeholder image issues:** Ensure online placeholder images are loading correctly and are appropriately sized/styled (e.g., the user avatar, video thumbnails). If specific placeholder image URLs are broken or generic, suggest better alternatives.
+    * **Refine subtle UI elements:** Pay attention to details like input field focus states, button hover/active states, shadows, borders, and transitions to enhance polish and interactivity.
+    * **Implement any missing basic structural HTML** elements if required by the design (e.g., clear sections for content rows).
+
+* **Modular JavaScript:** Keep JavaScript modular within the `js/` directory as structured. Import/export modules where appropriate.
+* **Error Handling:** Implement robust error handling and display user-friendly messages using the `#auth-error-message` (and similar for other pages) elements.
+* **Loading States:** Implement basic loading indicators for data-intensive operations (e.g., fetching videos, profile updates).
+* **Security:** Keep Firebase security rules in mind for future implementation, but prioritize frontend functionality for now.
+* **Performance Optimization:** Optimize JavaScript for performance (e.g., efficient DOM manipulation, avoiding unnecessary re-renders). Consider lazy loading or virtual scrolling for large content lists if performance becomes an issue (though this might be an advanced optimization for now).
+
+---
+
+**Specific Functionality to Implement (Page by Page):**
+
+**1. Global (`js/main.js`, `js/auth.js`)**
+
+* **Firebase Authentication Integration (`js/auth.js`):**
+    * **User Registration:** Connect `register.html` form (`#registerForm`) to `createUserWithEmailAndPassword`.
+        * Handle name input (store it in Firestore along with user's UID and email).
+        * Implement password confirmation check.
+        * Handle "Terms of Service" checkbox.
+    * **User Login:** Connect `login.html` form (`#loginForm`) to `signInWithEmailAndPassword`.
+    * **Google Sign-in/Sign-up:** Connect `#google-login-btn` and `#google-register-btn` to `signInWithPopup` with `GoogleAuthProvider`.
+        * For new Google users, save `displayName` and `email` to Firestore.
+    * **Logout:** Implement `logoutUser` function to call `signOut()`.
+    * **Error Display:** Use the `displayError` and `clearError` helper functions for all authentication flows.
+* **Authentication State Management (`js/main.js`):**
+    * Refine `onAuthStateChanged` to:
+        * Redirect authenticated users from `login.html`/`register.html`/`index.html` to `home.html`.
+        * Redirect unauthenticated users from `home.html`/`watch.html`/`profile.html`/`admin.html` to `login.html`.
+        * Update the `#user-display-name` in the header with the logged-in user's `displayName` or `email`.
+        * Connect the `#logout-btn` across all logged-in pages to the `logoutUser` function from `auth.js`.
+        * **Admin Access:** Implement a basic check (e.g., if user.email === 'admin@yourdomain.com') to show/hide the `#admin-link-container` in the header. (Later, we'll use Firestore for roles).
+
+**2. Homepage (`public/home.html`, `js/home.js`)**
+
+* **Dynamic Content Loading:**
+    * Fetch "Continue Watching" videos (placeholder data for now, later from Firestore, potentially based on user history).
+    * Fetch "Recommended for You" videos.
+    * Fetch "Explore by Subject" (e.g., "Math") videos.
+    * Populate the `<div class="carousel-container">` elements with `video-card` HTML dynamically.
+* **Placeholder Data:** Create a static JavaScript array of dummy video/course data in `js/home.js` (e.g., id, title, instructor, thumbnail URL, progress) to simulate content from Firestore.
+* **Search Functionality (Basic):** Implement a client-side search filter that filters the displayed videos based on keywords in the search bar.
+
+**3. Video Player Page (`public/watch.html`, `js/videoPlayer.js`)**
+
+* **Video Loading:**
+    * Read video ID from URL query parameter (e.g., `watch.html?id=video123`).
+    * Use this ID to fetch dummy video data (title, instructor, description, video URL, lessons) from a placeholder data source (e.g., a JS object or array in `videoPlayer.js`).
+    * Set the `src` of the `<video id="main-video-player">` tag and update `#video-title`, `#video-instructor`, `#video-description`, and `#video-meta-tags`.
+* **Course Lessons Sidebar:** Dynamically populate `#lesson-list` with links to other lessons in the "course." Highlight the currently playing lesson (`.active` class).
+* **Related Videos:** Dynamically populate the "Related Videos" `carousel-container`.
+
+**4. User Profile Page (`public/profile.html`, `js/profileManager.js`)**
+
+* **Display User Information:**
+    * Fetch and display logged-in user's `displayName` (from Firebase Auth) and `email` (read-only).
+    * Display `profile-avatar` (from Firebase Storage, or use a default if none set).
+* **Update Profile:**
+    * Allow users to update their `displayName` (connect to `auth.currentUser.updateProfile`).
+    * Allow users to upload a `profile-avatar` (upload to Firebase Storage, then update `auth.currentUser.updateProfile` with the new photoURL).
+    * Implement "Save Changes" button.
+* **Change Password:** Connect `change-password-form` to `auth.currentUser.updatePassword`. Require current password re-authentication before allowing change.
+* **Tab Functionality:** Implement the JavaScript to switch between "Account Information," "Change Password," and "Watch History" tabs.
+* **Watch History (Placeholder):** Dynamically populate `#watch-history-list` (initially with placeholder data, later from Firestore).
+
+**5. Admin Dashboard (`public/admin.html`, `js/adminDashboard.js`)**
+
+* **Admin Access Control:** Ensure this page is only accessible to users with an "admin" role (for now, use a simple email check like `user.email === 'admin@yourdomain.com'`). Redirect non-admins to `home.html` or `404.html`.
+* **Sidebar Navigation:** Implement JavaScript to switch between "User Management," "Content Management," "Analytics," and "Site Settings" sections using the sidebar links.
+* **Content Management (Basic Upload):**
+    * Connect `#add-video-form` to:
+        * Upload `video-file` to Firebase Storage.
+        * Upload `video-thumbnail` to Firebase Storage.
+        * Save video metadata (title, description, instructor, subject, video URL, thumbnail URL) to Firestore.
+    * Show upload progress (optional, but good for UX).
+* **User Management (Placeholder):** Dynamically populate the user table with dummy data.
+
+**6. Utilities (`js/utils.js`)**
+
+* Create a `utils.js` file for general helper functions that can be imported across different modules (e.g., `displayMessage(type, message, elementId)` for consistent error/info alerts, `showLoading(elementId)`, `hideLoading(elementId)`, etc.).
+
+---
+
+**Output Request:**
+
+Provide the full, updated, and optimized content for ALL affected HTML, CSS, and JavaScript files, including any new files. Ensure clear comments are added where complex logic or design choices are made.
+
+* `public/index.html` (Review/Optimize)
+* `public/login.html` (Review/Optimize)
+* `public/register.html` (Review/Optimize)
+* `public/home.html` (Review/Optimize, Implement JS placeholders)
+* `public/watch.html` (Review/Optimize, Implement JS placeholders)
+* `public/profile.html` (Review/Optimize, Implement JS placeholders)
+* `public/admin.html` (Review/Optimize, Implement JS placeholders)
+* `public/404.html` (Review/Optimize)
+* `public/css/style.css` (Updated/Optimized)
+* `public/css/base.css` (Updated/Optimized)
+* `public/css/layout.css` (Updated/Optimized)
+* `public/js/main.js` (Updated/New)
+* `public/js/auth.js` (Updated/New)
+* `public/js/home.js` (New)
+* `public/js/videoPlayer.js` (New)
+* `public/js/profileManager.js` (New)
+* `public/js/adminDashboard.js` (New)
+* `public/js/utils.js` (New)
+* Firebase Security Rules (Firestore and Storage - initial permissive for testing)
+
+Let's make 3ilm+ both highly functional and beautifully designed!

@@ -1,0 +1,765 @@
+/* public/css/style.css */
+/* This file contains main styles for components and page-specific adjustments */
+
+/* Horizontal scrolling content rows */
+.content-row {
+    margin-bottom: 60px; /* More spacing between rows */
+    padding: 0 4%;
+}
+
+.content-row h3 {
+    text-align: left;
+    margin-bottom: 25px; /* More spacing below heading */
+    font-size: 2.2em; /* Larger heading for content sections */
+    color: #F5F5F5;
+}
+
+.carousel-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 25px; /* More space for scrollbar */
+    /* Adjust padding for the last item not to be cut off if needed */
+}
+
+.carousel-container::-webkit-scrollbar {
+    height: 10px; /* Thicker scrollbar */
+}
+
+.carousel-container::-webkit-scrollbar-track {
+    background: #222;
+    border-radius: 10px;
+}
+
+.carousel-container::-webkit-scrollbar-thumb {
+    background: #555; /* Darker thumb */
+    border-radius: 10px;
+}
+
+.carousel-container::-webkit-scrollbar-thumb:hover {
+    background: #777; /* Lighter on hover */
+}
+
+/* Video Card */
+.video-card {
+    flex: 0 0 auto;
+    width: 280px; /* Slightly wider cards */
+    margin-right: 20px; /* More spacing between cards */
+    background: linear-gradient(145deg, #222, #181818); /* Subtle gradient for depth */
+    border-radius: 10px; /* More rounded corners */
+    box-shadow: 0 6px 15px rgba(0,0,0,0.4); /* Deeper shadow */
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Longer transition */
+    cursor: pointer;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+}
+
+.video-card:hover {
+    transform: scale(1.03) translateY(-5px); /* Lift and grow on hover */
+    z-index: 10;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.6);
+}
+
+.video-card img {
+    width: 100%;
+    height: 160px; /* Adjusted thumbnail height */
+    object-fit: cover;
+    display: block;
+}
+
+.video-card .card-info {
+    padding: 18px; /* More padding */
+    color: #E0E0E0;
+    text-align: left;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.video-card .card-info h4 {
+    font-size: 1.2em;
+    margin-bottom: 8px;
+    color: #F5F5F5;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.video-card .card-info p {
+    font-size: 0.9em;
+    color: #A0A0A0;
+    margin-bottom: 12px; /* More spacing */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.progress-bar-container {
+    background-color: #444;
+    border-radius: 5px;
+    height: 8px; /* Slightly thicker progress bar */
+    margin-bottom: 8px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #007BFF; /* Accent blue for progress */
+    border-radius: 5px;
+}
+
+.progress-text {
+    font-size: 0.8em;
+    color: #A0A0A0;
+    text-align: right;
+    margin-bottom: 15px; /* More spacing */
+}
+
+
+/* Auth Page specific styling adjustments */
+.auth-page {
+    min-height: 100vh;
+    background-color: #141414;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.auth-card {
+    background: linear-gradient(145deg, #1C1C1C, #111111); /* Darker, subtle gradient */
+    color: #E0E0E0;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.6); /* Deeper shadow */
+    border: 1px solid #222; /* More subtle border */
+    padding: 50px; /* More internal padding */
+    border-radius: 12px; /* More rounded */
+    width: 100%;
+    max-width: 480px; /* Slightly wider */
+    text-align: center;
+}
+
+.auth-card h2 {
+    color: #F5F5F5;
+    margin-bottom: 35px; /* More spacing */
+    font-size: 2.2em; /* Slightly larger */
+}
+
+.form-group {
+    margin-bottom: 25px; /* More spacing */
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px; /* More spacing */
+    font-weight: bold;
+    color: #E0E0E0;
+    font-size: 1.05em;
+}
+
+/* Input styles are in base.css now */
+
+.btn-full-width {
+    width: 100%;
+    margin-top: 20px; /* More spacing */
+}
+
+.form-link {
+    margin-top: 20px;
+    font-size: 1em; /* Slightly larger */
+    color: #A0A0A0;
+}
+
+.form-link a {
+    font-weight: bold;
+    color: #007BFF; /* Link color - blue */
+}
+.form-link a:hover {
+    color: #0056b3;
+}
+
+.separator {
+    margin: 30px 0; /* More spacing */
+    text-align: center;
+    border-bottom: 1px solid #333;
+    line-height: 0.1em;
+    color: #A0A0A0;
+}
+.separator span {
+    background: #1C1C1C;
+    padding: 0 10px;
+    font-size: 0.9em;
+}
+
+.btn-google {
+    background-color: #4285F4; /* Google brand color */
+    color: #fff;
+    border: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.btn-google:hover {
+    background-color: #357ae8;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+.btn-google img.icon {
+    height: 22px; /* Slightly larger Google icon */
+    width: auto;
+}
+
+.error-message {
+    background-color: rgba(68, 0, 0, 0.8); /* More subtle background for error */
+    color: #FFB3B3;
+    border: 1px solid rgba(102, 0, 0, 0.8);
+    padding: 12px; /* More padding */
+    border-radius: 6px;
+    margin-bottom: 25px; /* More spacing */
+    font-size: 0.95em;
+    text-align: center;
+    display: none;
+}
+.info-message {
+    background-color: rgba(0, 68, 68, 0.8);
+    color: #B3FFFF;
+    border: 1px solid rgba(0, 102, 102, 0.8);
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 25px;
+    font-size: 0.95em;
+    text-align: center;
+    display: none;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    text-align: left;
+}
+.checkbox-group input[type="checkbox"] {
+    width: auto;
+    margin-right: 12px; /* More spacing */
+    transform: scale(1.3); /* Slightly larger */
+}
+
+
+/* General User Avatar (for header on all logged-in pages) */
+.user-avatar img {
+    width: 38px; /* Slightly larger avatar */
+    height: 38px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #007BFF; /* Thicker blue border */
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.3); /* Subtle glow */
+}
+
+
+/* Home Page Specifics */
+.home-page {
+    padding-top: 150px;
+    padding-bottom: 50px;
+}
+
+.home-page h2 {
+    text-align: left;
+    margin-bottom: 40px;
+    padding: 0 4%;
+    font-size: 3em; /* Slightly larger welcome message */
+}
+
+.content-section {
+    margin-bottom: 60px; /* More spacing between sections */
+}
+
+.hero-content-feature {
+    background: linear-gradient(145deg, #1a1a1a, #0d0d0d); /* Darker, more gradient */
+    padding: 60px 0; /* More padding */
+    margin-bottom: 60px;
+    text-align: left;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.6); /* More prominent shadow */
+}
+
+.hero-content-feature .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px; /* More spacing */
+}
+
+@media (min-width: 992px) {
+    .hero-content-feature .container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+.feature-video-details {
+    flex: 1;
+    max-width: 650px; /* Wider text area */
+}
+
+.feature-video-details h2 {
+    font-size: 4em; /* Larger, more impactful */
+    margin-bottom: 25px;
+    color: #F5F5F5;
+    text-align: left;
+}
+
+.feature-video-details p {
+    font-size: 1.25em; /* Slightly larger description */
+    color: #D0D0D0;
+    margin-bottom: 40px; /* More spacing */
+    line-height: 1.6;
+}
+
+.feature-video-thumbnail {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 450px; /* Larger thumbnail area */
+    border-radius: 12px; /* More rounded */
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.7); /* Deepest shadow */
+}
+
+.feature-video-thumbnail img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+/* Watch Page Specifics */
+.watch-page {
+    padding-top: 100px;
+    padding-bottom: 50px;
+}
+
+.video-player-container {
+    background-color: #000;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+    margin-bottom: 0px;
+}
+
+#main-video-player {
+    width: 100%;
+    height: auto;
+    max-height: 75vh; /* Slightly taller video player */
+    background-color: #000;
+    border-radius: 0;
+    display: block;
+}
+
+.video-info {
+    padding: 30px 4%; /* More padding */
+    background: linear-gradient(145deg, #1a1a1a, #0d0d0d); /* Subtle gradient */
+    text-align: left;
+    color: #E0E0E0;
+    border-radius: 0 0 12px 12px; /* More rounded at bottom */
+    box-shadow: 0 6px 15px rgba(0,0,0,0.4); /* Shadow for info block */
+}
+
+.video-info h2 {
+    font-size: 2.5em; /* Larger title */
+    color: #F5F5F5;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.video-info p {
+    font-size: 1.1em;
+    color: #A0A0A0;
+    margin-bottom: 10px;
+}
+
+.video-meta-tags span {
+    display: inline-block;
+    background-color: #333;
+    color: #E0E0E0;
+    padding: 6px 12px; /* Slightly more padding */
+    border-radius: 5px; /* Slightly more rounded */
+    font-size: 0.9em; /* Slightly larger font */
+    margin-right: 12px;
+    margin-top: 12px;
+}
+
+#add-to-watchlist-btn {
+    margin-top: 25px; /* More spacing */
+    padding: 12px 25px;
+}
+
+.course-lessons-sidebar {
+    background: linear-gradient(145deg, #1a1a1a, #0d0d0d); /* Subtle gradient */
+    border-radius: 12px; /* More rounded */
+    box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+    color: #E0E0E0;
+    padding: 30px; /* More padding */
+    text-align: left;
+}
+
+.course-lessons-sidebar h3 {
+    color: #F5F5F5;
+    margin-bottom: 25px; /* More spacing */
+    font-size: 1.8em;
+}
+
+.lesson-list li {
+    margin-bottom: 12px; /* More spacing */
+}
+
+.lesson-list a {
+    display: block;
+    padding: 12px; /* More padding */
+    background-color: #222;
+    border-radius: 6px; /* More rounded */
+    color: #E0E0E0;
+    transition: background-color 0.2s, transform 0.2s ease;
+}
+
+.lesson-list a:hover {
+    background-color: #333;
+    text-decoration: none;
+    transform: translateX(5px); /* Slide effect on hover */
+}
+
+.lesson-list .active a {
+    background-color: #007BFF; /* Accent blue for active lesson */
+    color: #fff;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3); /* Subtle glow */
+}
+
+.lesson-list .active a:hover {
+    background-color: #0056b3;
+    transform: none; /* No slide for active */
+}
+
+/* Related Content Section */
+.related-content-section {
+    padding-top: 30px;
+    text-align: left;
+    margin-bottom: 60px; /* Consistent spacing */
+}
+.related-content-section h3 {
+    margin-bottom: 25px;
+    padding: 0 4%;
+}
+
+
+/* Profile Page Specifics */
+.profile-page {
+    padding-top: 100px;
+    padding-bottom: 50px;
+}
+
+.profile-page h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #F5F5F5;
+}
+
+.profile-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 35px; /* More spacing */
+    border-bottom: 1px solid #333;
+}
+
+.profile-tabs .tab-button {
+    background-color: transparent;
+    border: none;
+    padding: 15px 30px; /* More padding */
+    font-size: 1.15em; /* Slightly larger */
+    cursor: pointer;
+    color: #E0E0E0;
+    transition: color 0.2s, border-bottom 0.2s;
+    border-bottom: 3px solid transparent;
+}
+
+.profile-tabs .tab-button.active {
+    color: #007BFF; /* Accent blue for active tab */
+    border-bottom-color: #007BFF;
+    font-weight: bold;
+}
+
+.profile-tabs .tab-button:hover:not(.active) {
+    color: #00A3FF; /* Lighter blue on hover */
+}
+
+.profile-tab-content {
+    background: linear-gradient(145deg, #1a1a1a, #0d0d0d); /* Subtle gradient */
+    padding: 40px; /* More padding */
+    border-radius: 12px; /* More rounded */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5); /* Deeper shadow */
+    margin-top: 25px;
+    text-align: left;
+    color: #E0E0E0;
+}
+
+.profile-tab-content h3 {
+    margin-bottom: 30px; /* More spacing */
+    color: #F5F5F5;
+    text-align: center;
+    font-size: 2em;
+}
+
+.profile-avatar-preview {
+    width: 120px; /* Larger avatar preview */
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-top: 15px;
+    border: 4px solid #007BFF; /* Thicker blue border */
+    box-shadow: 0 0 0 5px rgba(0, 123, 255, 0.4); /* Stronger glow */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Admin Page Specifics */
+.admin-page {
+    padding-top: 100px;
+    padding-bottom: 50px;
+}
+
+.admin-page h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #F5F5F5;
+}
+
+.admin-sections-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+@media (min-width: 768px) {
+    .admin-sections-grid {
+        grid-template-columns: 250px 1fr;
+    }
+}
+
+.admin-sidebar {
+    background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+    padding: 25px; /* More padding */
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+    height: fit-content;
+}
+
+.admin-sidebar ul li {
+    margin-bottom: 18px; /* More spacing */
+}
+
+.admin-sidebar ul li:last-child {
+    margin-bottom: 0;
+}
+
+.admin-sidebar a {
+    display: block;
+    padding: 12px 18px; /* More padding */
+    background-color: #222;
+    color: #E0E0E0;
+    border-radius: 8px; /* More rounded */
+    transition: background-color 0.2s, color 0.2s, transform 0.2s ease;
+}
+
+.admin-sidebar a:hover {
+    background-color: #333;
+    color: #fff;
+    transform: translateX(5px); /* Slide effect */
+}
+
+.admin-sidebar a.active {
+    background-color: #007BFF; /* Accent blue for active item */
+    color: #fff;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+}
+.admin-sidebar a.active:hover {
+    background-color: #0056b3;
+    transform: none; /* No slide for active */
+}
+
+
+.admin-content-area .admin-section {
+    background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+    padding: 40px; /* More padding */
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    color: #E0E0E0;
+}
+
+.admin-content-area h3, .admin-content-area h4 {
+    color: #F5F5F5;
+    margin-bottom: 25px;
+    text-align: left;
+    font-size: 2em;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 25px;
+    color: #E0E0E0;
+}
+
+.admin-table th, .admin-table td {
+    border: 1px solid #333;
+    padding: 15px; /* More padding */
+    text-align: left;
+}
+
+.admin-table th {
+    background-color: #222;
+    font-weight: bold;
+    color: #F5F5F5;
+}
+
+.admin-table tbody tr:nth-child(even) {
+    background-color: #1a1a1a;
+}
+.admin-table tbody tr:nth-child(odd) {
+    background-color: #202020;
+}
+
+
+.admin-table .btn-small {
+    padding: 8px 15px; /* Slightly larger small button */
+    font-size: 0.85em;
+}
+
+/* Comments Section on Watch Page */
+.comments-section {
+    background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+    padding: 40px 4%;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    margin-top: 40px;
+    text-align: left;
+}
+.comments-section h3 {
+    text-align: left;
+    margin-bottom: 25px;
+    color: #F5F5F5;
+}
+.comment-input {
+    display: flex;
+    gap: 20px; /* More spacing */
+    margin-bottom: 30px;
+    flex-wrap: wrap; /* Allow wrapping */
+}
+.comment-input textarea {
+    flex-grow: 1;
+    min-width: 250px; /* Ensure textarea is not too small */
+}
+.comment-input button {
+    flex-shrink: 0; /* Prevent button from shrinking */
+}
+
+.comments-list {
+    border-top: 1px solid #333;
+    padding-top: 25px;
+}
+.comment-item {
+    background: linear-gradient(145deg, #222, #181818);
+    padding: 20px; /* More padding */
+    border-radius: 8px;
+    margin-bottom: 20px; /* More spacing */
+    color: #E0E0E0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+.comment-author {
+    font-weight: bold;
+    color: #007BFF; /* Blue for author name */
+    margin-bottom: 8px;
+    font-size: 1.05em;
+}
+.comment-text {
+    margin-bottom: 8px;
+    color: #C0C0C0;
+}
+.comment-date {
+    font-size: 0.85em;
+    color: #A0A0A0;
+}
+
+
+/* 404 Page */
+.not-found-page {
+    padding-top: 100px;
+    padding-bottom: 50px;
+    min-height: calc(100vh - 150px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.not-found-page h1 {
+    font-size: 3.5em;
+    color: #007BFF; /* Blue 404 text */
+    margin-bottom: 25px;
+}
+.not-found-page p {
+    font-size: 1.3em;
+    color: #E0E0E0;
+    margin-bottom: 40px;
+}
+.not-found-page img {
+    margin-bottom: 40px;
+}
+
+/* Search Bar (Updated and consolidated) */
+.main-header.logged-in .search-bar {
+    display: flex;
+    flex-grow: 1;
+    max-width: 400px;
+    margin-right: 20px;
+    border-radius: 6px; /* Rounded search bar */
+    overflow: hidden; /* Ensure contents respect border-radius */
+}
+
+.main-header.logged-in .search-bar input {
+    flex-grow: 1;
+    padding: 10px 18px; /* More padding */
+    border: none; /* No individual input border, handled by parent */
+    border-radius: 0; /* No individual input border-radius */
+    font-size: 1em;
+    background-color: #222; /* Darker input background */
+    color: #E0E0E0;
+}
+.main-header.logged-in .search-bar input::placeholder {
+    color: #888;
+}
+.main-header.logged-in .search-bar input:focus {
+    background-color: #333; /* Slightly lighter on focus */
+    box-shadow: inset 0 0 0 2px #007BFF; /* Inner glow for focus */
+}
+
+.main-header.logged-in .search-bar button {
+    padding: 10px 20px; /* More padding */
+    background-color: #007BFF;
+    color: white;
+    border: none; /* No individual button border */
+    border-radius: 0; /* No individual button border-radius */
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s ease;
+    font-weight: 600;
+}
+
+.main-header.logged-in .search-bar button:hover {
+    background-color: #0056b3;
+    transform: translateY(-1px); /* Subtle lift on hover */
+}
+
+/* Ensure images have no extra borders/backgrounds */
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}

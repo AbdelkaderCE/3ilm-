@@ -1,0 +1,40 @@
+/* Inside .main-header.logged-in styles or separately in style.css */
+.main-header.logged-in .search-bar {
+    display: flex;
+    flex-grow: 1; /* Allows it to take available space */
+    max-width: 400px; /* Limit search bar width */
+    margin-right: 20px; /* Space from nav links */
+}
+
+.main-header.logged-in .search-bar input {
+    flex-grow: 1;
+    padding: 8px 15px;
+    border: 1px solid #444; /* Darker border */
+    border-radius: 5px 0 0 5px;
+    font-size: 0.9em;
+    background-color: #333; /* Darker background for input */
+    color: #E0E0E0; /* Lighter text color */
+}
+.main-header.logged-in .search-bar input::placeholder {
+    color: #888; /* Placeholder text color */
+}
+.main-header.logged-in .search-bar input:focus {
+    border-color: #E50914; /* Red border on focus */
+    outline: none;
+}
+
+.main-header.logged-in .search-bar button {
+    padding: 8px 15px;
+    background-color: #E50914; /* Netflix Red */
+    color: white;
+    border: 1px solid #E50914;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-weight: 600;
+}
+
+.main-header.logged-in .search-bar button:hover {
+    background-color: #FF2B36;
+    border-color: #FF2B36;
+}

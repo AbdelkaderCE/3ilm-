@@ -1,0 +1,155 @@
+/* public/css/base.css */
+/* Basic CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Roboto', sans-serif; /* Assumes Roboto is linked in HTML */
+    line-height: 1.6;
+    color: #E0E0E0; /* Light text for dark background */
+    background-color: #141414; /* Dark background */
+    -webkit-font-smoothing: antialiased; /* Smoother text rendering */
+    -moz-osx-font-smoothing: grayscale; /* Smoother text rendering */
+}
+
+/* Basic Typography */
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 0.5em;
+    line-height: 1.2;
+    color: #F5F5F5; /* Very light text for headings */
+}
+
+h1 { font-size: 3.8em; font-weight: 700; letter-spacing: -0.02em;}
+h2 { font-size: 2.8em; font-weight: 600; letter-spacing: -0.01em;}
+h3 { font-size: 2.0em; font-weight: 500; }
+h4 { font-size: 1.5em; font-weight: 500; }
+p {
+    margin-bottom: 1em;
+}
+
+a {
+    color: #00A3FF; /* A slightly brighter, more modern blue for links */
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.2s ease; /* Add transform for subtle movement */
+}
+
+a:hover {
+    color: #00CCFF; /* Lighter blue on hover */
+    text-decoration: none;
+    transform: translateY(-1px); /* Subtle lift effect */
+}
+
+ul {
+    list-style: none;
+}
+
+/* Global container for content centering */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 4%;
+}
+
+/* Buttons - themed with new blue accent and modern feel */
+.btn {
+    display: inline-block;
+    padding: 14px 30px; /* Slightly more padding */
+    border-radius: 6px; /* Slightly more rounded */
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    border: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+.btn-primary {
+    background-color: #007BFF; /* Primary accent blue */
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px); /* Subtle lift on hover */
+}
+
+.btn-secondary {
+    background-color: rgba(109, 109, 110, 0.8); /* Slightly less translucent grey */
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary:hover {
+    background-color: rgba(109, 109, 110, 1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+.btn-flat {
+    background: none;
+    border: 2px solid rgba(255,255,255,0.3); /* Softer border */
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: 500;
+    box-shadow: none; /* No shadow for flat buttons */
+}
+.btn-flat:hover {
+    border-color: #007BFF; /* Blue border on hover */
+    background-color: rgba(0, 123, 255, 0.1); /* Subtle blue fill */
+    transform: translateY(-1px);
+}
+
+.btn-large {
+    padding: 18px 40px; /* More prominent for hero sections */
+    font-size: 1.3em;
+}
+
+/* Forms - More modern input fields */
+input[type="email"],
+input[type="password"],
+input[type="text"],
+input[type="file"],
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #333; /* Darker, subtle border */
+    border-radius: 5px;
+    font-size: 1em;
+    background-color: #222; /* Darker background */
+    color: #fff;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+input[type="email"]::placeholder,
+input[type="password"]::placeholder,
+input[type="text"]::placeholder,
+textarea::placeholder {
+    color: #888; /* Lighter placeholder text */
+}
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="text"]:focus,
+input[type="file"]:focus,
+textarea:focus {
+    border-color: #007BFF; /* Blue focus border */
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* Subtle blue glow */
+    outline: none;
+}
+/* File input specific styling (may vary by browser) */
+input[type="file"] {
+    background-color: #1a1a1a; /* Even darker for file input area */
+    border: 1px dashed #444; /* Dashed border for file upload */
+    padding: 15px;
+    text-align: center;
+    color: #A0A0A0;
+}

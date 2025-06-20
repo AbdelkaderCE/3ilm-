@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3ilm+ | Watch Video</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="main-header logged-in">
+        <div class="container">
+            <div class="logo">
+                <a href="home.html">
+                    <img src="assets/logo.png" alt="3ilm+ Logo">
+                    <h1>3ilm+</h1>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><button id="logout-btn" class="btn btn-secondary">Logout</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="watch-page">
+        <div class="container video-content-grid">
+            <div class="video-player-main-area">
+                <div class="video-player-wrapper">
+                    <video id="main-video-player" controls autoplay preload="metadata">
+                        <source src="assets/placeholder-video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-info">
+                    <h2 id="video-title">Introduction to Algebra: Basic Concepts</h2>
+                    <p class="video-instructor-info">Instructor: <span id="video-instructor">Ms. Fatima Zahra</span></p>
+                    <p id="video-description">This lesson covers the fundamental concepts of algebra, including variables, expressions, and basic equations, laying the groundwork for more advanced topics.</p>
+                    <div class="video-meta-tags">
+                        <span>Subject: Maths</span>
+                        <span>Level: Middle School</span>
+                        <span>Topic: Equations</span>
+                    </div>
+                    <button class="btn btn-primary" id="add-to-watchlist-btn">Add to Watchlist</button>
+                    <button class="btn btn-flat" id="download-notes-btn">Download Notes</button>
+                </div>
+            </div>
+
+            <div class="course-lessons-sidebar">
+                <h3>Course Lessons</h3>
+                <ul id="lesson-list">
+                    <li class="lesson-item active">
+                        <a href="watch.html?id=lesson1">1. Introduction to Algebra: Basic Concepts</a>
+                    </li>
+                    <li class="lesson-item">
+                        <a href="watch.html?id=lesson2">2. Solving Linear Equations</a>
+                    </li>
+                    <li class="lesson-item">
+                        <a href="watch.html?id=lesson3">3. Inequalities and Their Solutions</a>
+                    </li>
+                    <li class="lesson-item">
+                        <a href="watch.html?id=lesson4">4. Introduction to Graphing</a>
+                    </li>
+                    <li class="lesson-item">
+                        <a href="watch.html?id=lesson5">5. Systems of Equations</a>
+                    </li>
+                    </ul>
+            </div>
+        </div>
+
+        <section class="content-row related-content-section">
+            <h3>Related Videos</h3>
+            <div class="carousel-container">
+                <a href="watch.html?id=physics-elect" class="video-card">
+                    <img src="assets/thumbnail-physics.png" alt="Physics Lesson Thumbnail">
+                    <div class="card-info">
+                        <h4>Physics: Electromagnetism</h4>
+                        <p>Dr. Samir B.</p>
+                    </div>
+                </a>
+                <a href="watch.html?id=chem-acids" class="video-card">
+                    <img src="assets/thumbnail-chem.png" alt="Chemistry Lesson Thumbnail">
+                    <div class="card-info">
+                        <h4>Chemistry: Acids and Bases</h4>
+                        <p>Mr. Ahmed K.</p>
+                    </div>
+                </a>
+                 <a href="watch.html?id=math-geometry" class="video-card">
+                    <img src="assets/thumbnail-alg.png" alt="Geometry Lesson Thumbnail">
+                    <div class="card-info">
+                        <h4>Geometry: Triangles & Polygons</h4>
+                        <p>Ms. Fatima Zahra</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="content-section comments-section">
+            <div class="container">
+                <h3>Comments & Questions</h3>
+                <div class="comment-input">
+                    <textarea placeholder="Ask a question or leave a comment..." rows="3"></textarea>
+                    <button class="btn btn-primary">Post Comment</button>
+                </div>
+                <div class="comments-list">
+                    <div class="comment-item">
+                        <p class="comment-author">Student_Algeria123</p>
+                        <p class="comment-text">Great explanation! I finally understand this topic.</p>
+                        <span class="comment-date">2 days ago</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 3ilm+. All rights reserved.</p>
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/videoPlayer.js"></script>
+</body>
+</html>

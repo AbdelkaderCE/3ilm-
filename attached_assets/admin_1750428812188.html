@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3ilm+ | Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="main-header logged-in">
+        <div class="container">
+            <div class="logo">
+                <a href="home.html">
+                    <img src="assets/logo.png" alt="3ilm+ Logo">
+                    <h1>3ilm+</h1>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="admin.html">Admin</a></li>
+                    <li><button id="logout-btn" class="btn btn-secondary">Logout</button></li>
+                    <li class="user-avatar"><img src="assets/default-avatar.png" alt="Admin Avatar"></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="admin-page">
+        <div class="container">
+            <h2>Admin Dashboard</h2>
+
+            <div class="admin-sections-grid">
+                <div class="admin-sidebar">
+                    <ul>
+                        <li><a href="#users" class="active">User Management</a></li>
+                        <li><a href="#content">Content Management</a></li>
+                        <li><a href="#analytics">Analytics & Reports</a></li>
+                        <li><a href="#settings">Site Settings</a></li>
+                    </ul>
+                </div>
+                <div class="admin-content-area">
+                    <section id="users" class="admin-section active">
+                        <h3>User Management</h3>
+                        <p>List of all registered users. Admin functions for editing roles, viewing details, etc.</p>
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Admin User</td>
+                                    <td>admin@3ilm.com</td>
+                                    <td>Admin</td>
+                                    <td><button class="btn btn-secondary btn-small">Edit</button></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Student One</td>
+                                    <td>student1@example.com</td>
+                                    <td>Student</td>
+                                    <td><button class="btn btn-secondary btn-small">Edit</button></td>
+                                </tr>
+                                </tbody>
+                        </table>
+                    </section>
+
+                    <section id="content" class="admin-section" style="display: none;">
+                        <h3>Content Management</h3>
+                        <p>Upload new videos, manage courses, categories, and instructors.</p>
+                        <h4>Add New Video</h4>
+                        <form id="add-video-form">
+                            <div class="form-group">
+                                <label for="video-title">Video Title</label>
+                                <input type="text" id="video-title" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="video-file">Video File (MP4)</label>
+                                <input type="file" id="video-file" accept="video/mp4" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="video-thumbnail">Thumbnail Image</label>
+                                <input type="file" id="video-thumbnail" accept="image/*">
+                            </div>
+                            <div class="form-group">
+                                <label for="video-description">Description</label>
+                                <textarea id="video-description" rows="4"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="video-instructor">Instructor</label>
+                                <input type="text" id="video-instructor">
+                            </div>
+                            <div class="form-group">
+                                <label for="video-subject">Subject/Category</label>
+                                <input type="text" id="video-subject">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Upload Video</button>
+                        </form>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 3ilm+. All rights reserved.</p>
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/adminDashboard.js"></script>
+</body>
+</html>
