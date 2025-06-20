@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3ilm+ | مشاهدة الفيديو</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+</head>
+<body>
+    <header class="main-header logged-in">
+        <div class="container">
+            <div class="logo">
+                <a href="home.html">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="40" height="40" rx="8" fill="#007BFF"/>
+                        <path d="M10 12h20v2H10v-2zm0 4h20v2H10v-2zm0 4h20v2H10v-2zm0 4h12v2H10v-2z" fill="white"/>
+                        <circle cx="30" cy="26" r="6" fill="#00A3FF"/>
+                        <path d="M27 24l6 2-6 2v-4z" fill="white"/>
+                    </svg>
+                    <h1>3ilm+</h1>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="home.html">الرئيسية</a></li>
+                    <li><a href="profile.html">الملف الشخصي</a></li>
+                    <li><button id="logout-btn" class="btn btn-secondary">تسجيل الخروج</button></li>
+                    <li class="user-avatar">
+                        <img id="user-avatar-img" src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👤</text></svg>" alt="صورة المستخدم">
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="watch-page">
+        <div class="container video-content-grid">
+            <div class="video-player-main-area">
+                <div class="video-player-wrapper">
+                    <video id="main-video-player" controls preload="metadata" poster="">
+                        <source src="" type="video/mp4">
+                        متصفحك لا يدعم تشغيل الفيديو.
+                    </video>
+                    <div id="video-loading" class="video-loading-overlay" style="display: none;">
+                        <div class="loading-spinner">
+                            <div class="spinner"></div>
+                            <p>جاري تحميل الفيديو...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <h2 id="video-title">عنوان الفيديو</h2>
+                    <p class="video-instructor-info">المدرس: <span id="video-instructor">غير محدد</span></p>
+                    <p id="video-description">وصف الفيديو سيظهر هنا.</p>
+                    <div class="video-meta-tags" id="video-meta-tags">
+                        <!-- Tags will be dynamically added -->
+                    </div>
+                    <div class="video-actions">
+                        <button class="btn btn-primary" id="add-to-watchlist-btn">إضافة للمتابعة</button>
+                        <button class="btn btn-flat" id="download-notes-btn" style="display: none;">تحميل الملاحظات</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="course-lessons-sidebar">
+                <h3>دروس الكورس</h3>
+                <div id="lessons-loading" class="loading-spinner" style="display: none;">
+                    <div class="spinner"></div>
+                </div>
+                <ul id="lesson-list">
+                    <!-- Lessons will be dynamically loaded -->
+                </ul>
+            </div>
+        </div>
+
+        <section class="content-row related-content-section">
+            <h3>فيديوهات ذات صلة</h3>
+            <div id="related-loading" class="loading-spinner" style="display: none;">
+                <div class="spinner"></div>
+            </div>
+            <div class="carousel-container" id="related-videos-carousel">
+                <!-- Related videos will be dynamically loaded -->
+            </div>
+        </section>
+
+        <section class="content-section comments-section">
+            <div class="container">
+                <h3>التعليقات والأسئلة</h3>
+                <div class="comment-input" id="comment-input-section">
+                    <textarea id="comment-text" placeholder="اطرح سؤالاً أو اترك تعليقاً..." rows="3"></textarea>
+                    <button class="btn btn-primary" id="post-comment-btn">نشر التعليق</button>
+                </div>
+                <div id="comments-loading" class="loading-spinner" style="display: none;">
+                    <div class="spinner"></div>
+                </div>
+                <div class="comments-list" id="comments-list">
+                    <!-- Comments will be dynamically loaded -->
+                </div>
+                <div id="no-comments" class="empty-state" style="display: none;">
+                    <p>لا توجد تعليقات بعد. كن أول من يعلق!</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 3ilm+. جميع الحقوق محفوظة.</p>
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="#">سياسة الخصوصية</a></li>
+                    <li><a href="#">شروط الخدمة</a></li>
+                    <li><a href="#">اتصل بنا</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- Environment Configuration -->
+    <script src="js/env.js"></script>
+    
+    <!-- Main Scripts -->
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/videoPlayer.js"></script>
+    <script type="module" src="js/comments.js"></script>
+</body>
+</html>

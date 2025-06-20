@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3ilm+ | تسجيل الدخول</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="40" height="40" rx="8" fill="#007BFF"/>
+                        <path d="M10 12h20v2H10v-2zm0 4h20v2H10v-2zm0 4h20v2H10v-2zm0 4h12v2H10v-2z" fill="white"/>
+                        <circle cx="30" cy="26" r="6" fill="#00A3FF"/>
+                        <path d="M27 24l6 2-6 2v-4z" fill="white"/>
+                    </svg>
+                    <h1>3ilm+</h1>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html" class="btn btn-secondary">العودة للرئيسية</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="auth-page">
+        <div class="container">
+            <div class="auth-card">
+                <h2>تسجيل الدخول إلى حسابك في 3ilm+</h2>
+                <div id="auth-error-message" class="error-message" style="display: none;"></div>
+                <div id="auth-loading" class="loading-spinner" style="display: none;">
+                    <div class="spinner"></div>
+                </div>
+
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="login-email">البريد الإلكتروني</label>
+                        <input type="email" id="login-email" required autocomplete="email" placeholder="أدخل بريدك الإلكتروني">
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">كلمة المرور</label>
+                        <input type="password" id="login-password" required autocomplete="current-password" placeholder="أدخل كلمة المرور">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full-width">تسجيل الدخول</button>
+                    <p class="form-link">
+                        <a href="#" id="forgot-password-link">نسيت كلمة المرور؟</a>
+                    </p>
+                </form>
+
+                <div class="separator">أو</div>
+
+                <button id="google-login-btn" class="btn btn-google btn-full-width">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M17.64 9.20454C17.64 8.56636 17.5827 7.95272 17.4764 7.36363H9V10.8436H13.8436C13.635 11.9709 13.0009 12.9232 12.0477 13.5618V15.8195H14.9564C16.6582 14.2527 17.64 11.9454 17.64 9.20454Z" fill="#4285F4"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M9 18C11.43 18 13.4673 17.1941 14.9564 15.8195L12.0477 13.5618C11.2418 14.1013 10.2109 14.4204 9 14.4204C6.65591 14.4204 4.67182 12.8372 3.96409 10.71H0.957275V13.0418C2.43818 15.9831 5.48182 18 9 18Z" fill="#34A853"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M3.96409 10.71C3.78409 10.1705 3.68182 9.59318 3.68182 9C3.68182 8.40682 3.78409 7.82954 3.96409 7.29H0.957275C0.347727 8.50909 0 9.87272 0 11.3409C0 12.8091 0.347727 14.1727 0.957275 15.3918L3.96409 12.96V10.71Z" fill="#FBBC04"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M9 3.57955C10.3214 3.57955 11.5077 4.03364 12.4405 4.92545L15.0218 2.34409C13.4632 0.891818 11.4259 0 9 0C5.48182 0 2.43818 2.01682 0.957275 4.95818L3.96409 7.29C4.67182 5.16273 6.65591 3.57955 9 3.57955Z" fill="#EA4335"/>
+                    </svg>
+                    تسجيل الدخول باستخدام Google
+                </button>
+
+                <p class="form-link">
+                    ليس لديك حساب؟ <a href="register.html">أنشئ حساباً هنا</a>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 3ilm+. جميع الحقوق محفوظة.</p>
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="#">سياسة الخصوصية</a></li>
+                    <li><a href="#">شروط الخدمة</a></li>
+                    <li><a href="#">اتصل بنا</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- Environment Configuration -->
+    <script src="js/env.js"></script>
+    
+    <!-- Main Scripts -->
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/auth.js"></script>
+</body>
+</html>
