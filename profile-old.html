@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3ilm+ | الملف الشخصي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+</head>
+<body>
+    <header class="main-header logged-in">
+        <div class="container">
+            <div class="logo">
+                <a href="home.html">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="40" height="40" rx="8" fill="#007BFF"/>
+                        <path d="M10 12h20v2H10v-2zm0 4h20v2H10v-2zm0 4h20v2H10v-2zm0 4h12v2H10v-2z" fill="white"/>
+                        <circle cx="30" cy="26" r="6" fill="#00A3FF"/>
+                        <path d="M27 24l6 2-6 2v-4z" fill="white"/>
+                    </svg>
+                    <h1>3ilm+</h1>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="home.html">الرئيسية</a></li>
+                    <li><a href="profile.html">الملف الشخصي</a></li>
+                    <li id="admin-nav-item" style="display: none;"><a href="admin.html">الإدارة</a></li>
+                    <li><button id="logout-btn" class="btn btn-secondary">تسجيل الخروج</button></li>
+                    <li class="user-avatar">
+                        <img id="user-avatar-img" src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👤</text></svg>" alt="صورة المستخدم">
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="profile-page">
+        <div class="container">
+            <h2>الملف الشخصي</h2>
+            <div id="profile-message" class="info-message" style="display: none;"></div>
+            <div id="profile-error" class="error-message" style="display: none;"></div>
+            <div id="profile-loading" class="loading-spinner" style="display: none;">
+                <div class="spinner"></div>
+            </div>
+
+            <div class="profile-tabs">
+                <button class="tab-button active" data-tab="account">معلومات الحساب</button>
+                <button class="tab-button" data-tab="password">تغيير كلمة المرور</button>
+                <button class="tab-button" data-tab="history">سجل المشاهدة</button>
+                <button class="tab-button" data-tab="watchlist">قائمة المتابعة</button>
+            </div>
+
+            <div id="account-tab" class="profile-tab-content active">
+                <h3>معلومات الحساب</h3>
+                <form id="profile-form">
+                    <div class="form-group">
+                        <label for="display-name">الاسم المعروض</label>
+                        <input type="text" id="display-name" required placeholder="أدخل اسمك المعروض">
+                    </div>
+                    <div class="form-group">
+                        <label for="profile-email">البريد الإلكتروني</label>
+                        <input type="email" id="profile-email" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="profile-level">المستوى الدراسي</label>
+                        <select id="profile-level">
+                            <option value="middle">متوسط</option>
+                            <option value="high">ثانوي</option>
+                            <option value="university">جامعي</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="profile-avatar">الصورة الشخصية</label>
+                        <input type="file" id="profile-avatar" accept="image/*">
+                        <img id="current-avatar" src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👤</text></svg>" alt="الصورة الحالية" class="profile-avatar-preview">
+                    </div>
+                    <button type="submit" class="btn btn-primary">حفظ التغييرات</button>
+                </form>
+            </div>
+
+            <div id="password-tab" class="profile-tab-content" style="display: none;">
+                <h3>تغيير كلمة المرور</h3>
+                <form id="change-password-form">
+                    <div class="form-group">
+                        <label for="current-password">كلمة المرور الحالية</label>
+                        <input type="password" id="current-password" required placeholder="أدخل كلمة المرور الحالية">
+                    </div>
+                    <div class="form-group">
+                        <label for="new-password">كلمة المرور الجديدة</label>
+                        <input type="password" id="new-password" required placeholder="أدخل كلمة المرور الجديدة">
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-new-password">تأكيد كلمة المرور الجديدة</label>
+                        <input type="password" id="confirm-new-password" required placeholder="أعد إدخال كلمة المرور الجديدة">
+                    </div>
+                    <button type="submit" class="btn btn-primary">تغيير كلمة المرور</button>
+                </form>
+            </div>
+
+            <div id="history-tab" class="profile-tab-content" style="display: none;">
+                <h3>سجل المشاهدة</h3>
+                <div id="history-loading" class="loading-spinner" style="display: none;">
+                    <div class="spinner"></div>
+                </div>
+                <ul id="watch-history-list" class="watch-history-list">
+                    <!-- Watch history will be dynamically loaded -->
+                </ul>
+                <div id="no-history" class="empty-state" style="display: none;">
+                    <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="80" height="80" rx="40" fill="#333"/>
+                        <path d="M25 30h30v20H25V30zm5 5v10h20V35H30z" fill="#666"/>
+                        <circle cx="40" cy="40" r="3" fill="#333"/>
+                    </svg>
+                    <h4>لا يوجد سجل مشاهدة</h4>
+                    <p>ابدأ بمشاهدة الفيديوهات لرؤية سجل المشاهدة هنا.</p>
+                </div>
+            </div>
+
+            <div id="watchlist-tab" class="profile-tab-content" style="display: none;">
+                <h3>قائمة المتابعة</h3>
+                <div id="watchlist-loading" class="loading-spinner" style="display: none;">
+                    <div class="spinner"></div>
+                </div>
+                <div class="carousel-container" id="watchlist-carousel">
+                    <!-- Watchlist videos will be dynamically loaded -->
+                </div>
+                <div id="no-watchlist" class="empty-state" style="display: none;">
+                    <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="80" height="80" rx="40" fill="#333"/>
+                        <path d="M30 25v30l20-15-20-15z" fill="#666"/>
+                    </svg>
+                    <h4>قائمة المتابعة فارغة</h4>
+                    <p>أضف فيديوهات إلى قائمة المتابعة لمشاهدتها لاحقاً.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 3ilm+. جميع الحقوق محفوظة.</p>
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="#">سياسة الخصوصية</a></li>
+                    <li><a href="#">شروط الخدمة</a></li>
+                    <li><a href="#">اتصل بنا</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- Environment Configuration -->
+    <script src="js/env.js"></script>
+    
+    <!-- Main Scripts -->
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/profileManager.js"></script>
+</body>
+</html>

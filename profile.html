@@ -1,18 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3ilm+ | الملف الشخصي</title>
+    <title>الملف الشخصي | 3ilm+</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/profile.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
 </head>
 <body>
-    <header class="main-header logged-in">
+    <header class="main-header">
         <div class="container">
             <div class="logo">
                 <a href="home.html">
@@ -28,9 +29,8 @@
             <nav class="main-nav">
                 <ul>
                     <li><a href="home.html">الرئيسية</a></li>
-                    <li><a href="profile.html">الملف الشخصي</a></li>
-                    <li id="admin-nav-item" style="display: none;"><a href="admin.html">الإدارة</a></li>
-                    <li><button id="logout-btn" class="btn btn-secondary">تسجيل الخروج</button></li>
+                    <li><a href="profile.html" class="active">الملف الشخصي</a></li>
+                    <li><button id="logout-btn" class="btn btn-flat">تسجيل الخروج</button></li>
                     <li class="user-avatar">
                         <img id="user-avatar-img" src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👤</text></svg>" alt="صورة المستخدم">
                     </li>
@@ -39,105 +39,238 @@
         </div>
     </header>
 
-    <main class="profile-page">
+    <!-- Profile Hero Section -->
+    <section class="profile-hero">
+        <div class="profile-hero-bg">
+            <div class="hero-gradient"></div>
+        </div>
         <div class="container">
-            <h2>الملف الشخصي</h2>
-            <div id="profile-message" class="info-message" style="display: none;"></div>
-            <div id="profile-error" class="error-message" style="display: none;"></div>
-            <div id="profile-loading" class="loading-spinner" style="display: none;">
-                <div class="spinner"></div>
-            </div>
-
-            <div class="profile-tabs">
-                <button class="tab-button active" data-tab="account">معلومات الحساب</button>
-                <button class="tab-button" data-tab="password">تغيير كلمة المرور</button>
-                <button class="tab-button" data-tab="history">سجل المشاهدة</button>
-                <button class="tab-button" data-tab="watchlist">قائمة المتابعة</button>
-            </div>
-
-            <div id="account-tab" class="profile-tab-content active">
-                <h3>معلومات الحساب</h3>
-                <form id="profile-form">
-                    <div class="form-group">
-                        <label for="display-name">الاسم المعروض</label>
-                        <input type="text" id="display-name" required placeholder="أدخل اسمك المعروض">
-                    </div>
-                    <div class="form-group">
-                        <label for="profile-email">البريد الإلكتروني</label>
-                        <input type="email" id="profile-email" disabled>
-                    </div>
-                    <div class="form-group">
-                        <label for="profile-level">المستوى الدراسي</label>
-                        <select id="profile-level">
-                            <option value="middle">متوسط</option>
-                            <option value="high">ثانوي</option>
-                            <option value="university">جامعي</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="profile-avatar">الصورة الشخصية</label>
-                        <input type="file" id="profile-avatar" accept="image/*">
-                        <img id="current-avatar" src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👤</text></svg>" alt="الصورة الحالية" class="profile-avatar-preview">
-                    </div>
-                    <button type="submit" class="btn btn-primary">حفظ التغييرات</button>
-                </form>
-            </div>
-
-            <div id="password-tab" class="profile-tab-content" style="display: none;">
-                <h3>تغيير كلمة المرور</h3>
-                <form id="change-password-form">
-                    <div class="form-group">
-                        <label for="current-password">كلمة المرور الحالية</label>
-                        <input type="password" id="current-password" required placeholder="أدخل كلمة المرور الحالية">
-                    </div>
-                    <div class="form-group">
-                        <label for="new-password">كلمة المرور الجديدة</label>
-                        <input type="password" id="new-password" required placeholder="أدخل كلمة المرور الجديدة">
-                    </div>
-                    <div class="form-group">
-                        <label for="confirm-new-password">تأكيد كلمة المرور الجديدة</label>
-                        <input type="password" id="confirm-new-password" required placeholder="أعد إدخال كلمة المرور الجديدة">
-                    </div>
-                    <button type="submit" class="btn btn-primary">تغيير كلمة المرور</button>
-                </form>
-            </div>
-
-            <div id="history-tab" class="profile-tab-content" style="display: none;">
-                <h3>سجل المشاهدة</h3>
-                <div id="history-loading" class="loading-spinner" style="display: none;">
-                    <div class="spinner"></div>
+            <div class="profile-hero-content">
+                <div class="profile-avatar-container">
+                    <img id="profile-avatar" src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%23007BFF'/><circle cx='50' cy='40' r='12' fill='white'/><path d='M30 70c0-11 9-20 20-20s20 9 20 20' fill='white'/></svg>" alt="صورة الملف الشخصي">
+                    <button class="edit-avatar-btn" id="edit-avatar-btn">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M8 2l3 3-8 8H0v-3l8-8z" fill="currentColor"/>
+                        </svg>
+                    </button>
+                    <input type="file" id="avatar-upload" accept="image/*" style="display: none;">
                 </div>
-                <ul id="watch-history-list" class="watch-history-list">
-                    <!-- Watch history will be dynamically loaded -->
-                </ul>
-                <div id="no-history" class="empty-state" style="display: none;">
-                    <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="80" height="80" rx="40" fill="#333"/>
-                        <path d="M25 30h30v20H25V30zm5 5v10h20V35H30z" fill="#666"/>
-                        <circle cx="40" cy="40" r="3" fill="#333"/>
-                    </svg>
-                    <h4>لا يوجد سجل مشاهدة</h4>
-                    <p>ابدأ بمشاهدة الفيديوهات لرؤية سجل المشاهدة هنا.</p>
+                <div class="profile-info">
+                    <h1 id="profile-name" class="profile-title">اسم المستخدم</h1>
+                    <p id="profile-email" class="profile-email">user@example.com</p>
+                    <div class="profile-badges">
+                        <span class="badge level-badge" id="level-badge">طالب جامعي</span>
+                        <span class="badge member-badge">عضو منذ 2025</span>
+                    </div>
+                </div>
+                <div class="profile-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" id="videos-watched">0</span>
+                        <span class="stat-label">فيديو مكتمل</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="hours-watched">0</span>
+                        <span class="stat-label">ساعة تعلم</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="streak-days">0</span>
+                        <span class="stat-label">يوم متتالي</span>
+                    </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div id="watchlist-tab" class="profile-tab-content" style="display: none;">
-                <h3>قائمة المتابعة</h3>
-                <div id="watchlist-loading" class="loading-spinner" style="display: none;">
-                    <div class="spinner"></div>
-                </div>
-                <div class="carousel-container" id="watchlist-carousel">
-                    <!-- Watchlist videos will be dynamically loaded -->
-                </div>
-                <div id="no-watchlist" class="empty-state" style="display: none;">
-                    <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="80" height="80" rx="40" fill="#333"/>
-                        <path d="M30 25v30l20-15-20-15z" fill="#666"/>
-                    </svg>
-                    <h4>قائمة المتابعة فارغة</h4>
-                    <p>أضف فيديوهات إلى قائمة المتابعة لمشاهدتها لاحقاً.</p>
-                </div>
+    <!-- Profile Navigation -->
+    <nav class="profile-nav">
+        <div class="container">
+            <div class="profile-nav-tabs">
+                <button class="nav-tab active" data-section="overview">نظرة عامة</button>
+                <button class="nav-tab" data-section="continue-watching">المتابعة</button>
+                <button class="nav-tab" data-section="history">السجل</button>
+                <button class="nav-tab" data-section="watchlist">المفضلة</button>
+                <button class="nav-tab" data-section="achievements">الإنجازات</button>
+                <button class="nav-tab" data-section="settings">الإعدادات</button>
             </div>
+        </div>
+    </nav>
+
+    <!-- Profile Content -->
+    <main class="profile-content">
+        <div class="container">
+            <!-- Overview Section -->
+            <section id="overview-section" class="profile-section active">
+                <div class="section-grid">
+                    <div class="content-card recent-activity">
+                        <h3>النشاط الأخير</h3>
+                        <div id="recent-activity-content" class="activity-list">
+                            <!-- سيتم تحميل النشاط الأخير هنا -->
+                        </div>
+                    </div>
+                    <div class="content-card learning-progress">
+                        <h3>تقدم التعلم</h3>
+                        <div id="learning-progress-content" class="progress-list">
+                            <!-- سيتم تحميل تقدم التعلم هنا -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="recommendations-section">
+                    <h3>موصى لك</h3>
+                    <div class="content-carousel" id="recommendations-carousel">
+                        <!-- سيتم تحميل التوصيات هنا -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Continue Watching Section -->
+            <section id="continue-watching-section" class="profile-section">
+                <h2>واصل المشاهدة</h2>
+                <div class="content-grid" id="continue-watching-grid">
+                    <!-- سيتم تحميل الفيديوهات قيد المشاهدة هنا -->
+                </div>
+            </section>
+
+            <!-- History Section -->
+            <section id="history-section" class="profile-section">
+                <div class="section-header">
+                    <h2>سجل المشاهدة</h2>
+                    <div class="history-filters">
+                        <button class="filter-btn active" data-filter="all">الكل</button>
+                        <button class="filter-btn" data-filter="today">اليوم</button>
+                        <button class="filter-btn" data-filter="week">هذا الأسبوع</button>
+                        <button class="filter-btn" data-filter="month">هذا الشهر</button>
+                    </div>
+                </div>
+                <div class="history-content" id="history-content">
+                    <!-- سيتم تحميل سجل المشاهدة هنا -->
+                </div>
+            </section>
+
+            <!-- Watchlist Section -->
+            <section id="watchlist-section" class="profile-section">
+                <div class="section-header">
+                    <h2>قائمة المفضلة</h2>
+                    <span class="content-count" id="watchlist-count">0 فيديو</span>
+                </div>
+                <div class="content-grid" id="watchlist-grid">
+                    <!-- سيتم تحميل قائمة المفضلة هنا -->
+                </div>
+            </section>
+
+            <!-- Achievements Section -->
+            <section id="achievements-section" class="profile-section">
+                <h2>الإنجازات والشارات</h2>
+                <div class="achievements-grid" id="achievements-grid">
+                    <!-- سيتم تحميل الإنجازات هنا -->
+                </div>
+                
+                <div class="learning-stats-section">
+                    <h3>إحصائيات مفصلة</h3>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">📊</div>
+                            <div class="stat-details">
+                                <span class="stat-value" id="total-hours">0</span>
+                                <span class="stat-label">ساعة إجمالية</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">🎯</div>
+                            <div class="stat-details">
+                                <span class="stat-value" id="subjects-count">0</span>
+                                <span class="stat-label">مادة دراسية</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">🏆</div>
+                            <div class="stat-details">
+                                <span class="stat-value" id="achievements-count">0</span>
+                                <span class="stat-label">إنجاز محقق</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settings-section" class="profile-section">
+                <h2>إعدادات الحساب</h2>
+                <div class="settings-layout">
+                    <div class="settings-card">
+                        <h3>المعلومات الشخصية</h3>
+                        <form id="profile-form" class="settings-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="display-name">الاسم المعروض</label>
+                                    <input type="text" id="display-name" placeholder="أدخل اسمك">
+                                </div>
+                                <div class="form-group">
+                                    <label for="education-level">المستوى التعليمي</label>
+                                    <select id="education-level">
+                                        <option value="middle">متوسط</option>
+                                        <option value="high">ثانوي</option>
+                                        <option value="university">جامعي</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="bio">نبذة شخصية</label>
+                                <textarea id="bio" placeholder="أخبرنا عن اهتماماتك التعليمية" rows="3"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">حفظ التغييرات</button>
+                        </form>
+                    </div>
+
+                    <div class="settings-card">
+                        <h3>الأمان وكلمة المرور</h3>
+                        <form id="password-form" class="settings-form">
+                            <div class="form-group">
+                                <label for="current-password">كلمة المرور الحالية</label>
+                                <input type="password" id="current-password" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="new-password">كلمة المرور الجديدة</label>
+                                    <input type="password" id="new-password" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirm-password">تأكيد كلمة المرور</label>
+                                    <input type="password" id="confirm-password" required>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">تحديث كلمة المرور</button>
+                        </form>
+                    </div>
+
+                    <div class="settings-card">
+                        <h3>تفضيلات المنصة</h3>
+                        <div class="preferences-list">
+                            <div class="preference-item">
+                                <label class="preference-toggle">
+                                    <input type="checkbox" id="notifications">
+                                    <span class="toggle-slider"></span>
+                                    <span class="preference-label">إشعارات البريد الإلكتروني</span>
+                                </label>
+                            </div>
+                            <div class="preference-item">
+                                <label class="preference-toggle">
+                                    <input type="checkbox" id="autoplay">
+                                    <span class="toggle-slider"></span>
+                                    <span class="preference-label">تشغيل تلقائي للفيديو التالي</span>
+                                </label>
+                            </div>
+                            <div class="preference-item">
+                                <label class="preference-toggle">
+                                    <input type="checkbox" id="dark-mode">
+                                    <span class="toggle-slider"></span>
+                                    <span class="preference-label">الوضع المظلم</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     </main>
 

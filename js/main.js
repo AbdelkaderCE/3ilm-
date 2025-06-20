@@ -2,7 +2,7 @@
 import { firebaseConfig } from './firebase-config.js';
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js';
 import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js';
-import { showNotification, hideLoading, showLoading } from './utils.js';
+import { showLoading, hideLoading } from './utils.js';
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -10,6 +10,82 @@ const auth = getAuth(app);
 
 // Export app instance for other modules
 export { app, auth };
+
+// Export showNotification function to avoid circular dependency
+export function showNotification(message, type = 'info', duration = 5000) {
+    // Remove existing notifications
+    const existingNotifications = document.querySelectorAll('.notification');
+    existingNotifications.forEach(notification => notification.remove());
+    
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    
+    // Create notification content
+    const content = document.createElement('div');
+    content.className = 'notification-content';
+    
+    // Add icon based on type
+    const icon = document.createElement('span');
+    icon.className = 'notification-icon';
+    
+    switch (type) {
+        case 'success':
+            icon.textContent = '✓';
+            break;
+        case 'error':
+            icon.textContent = '✗';
+            break;
+        case 'warning':
+            icon.textContent = '⚠';
+            break;
+        default:
+            icon.textContent = 'ℹ';
+    }
+    
+    const text = document.createElement('span');
+    text.className = 'notification-text';
+    text.textContent = message;
+    
+    const closeButton = document.createElement('button');
+    closeButton.className = 'notification-close';
+    closeButton.textContent = '×';
+    closeButton.addEventListener('click', () => hideNotification(notification));
+    
+    content.appendChild(icon);
+    content.appendChild(text);
+    content.appendChild(closeButton);
+    notification.appendChild(content);
+    
+    // Add to page
+    document.body.appendChild(notification);
+    
+    // Show notification
+    setTimeout(() => {
+        notification.classList.add('show');
+    }, 100);
+    
+    // Auto-hide after duration
+    if (duration > 0) {
+        setTimeout(() => {
+            hideNotification(notification);
+        }, duration);
+    }
+    
+    return notification;
+}
+
+// Export hideNotification function
+export function hideNotification(notification) {
+    if (notification && notification.parentNode) {
+        notification.classList.remove('show');
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 300);
+    }
+}
 
 // Global state management
 window.currentUser = null;
